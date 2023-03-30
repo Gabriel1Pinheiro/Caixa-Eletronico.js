@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let nome = prompt("Informe seu nome:");
+
+        let tipoDeUsuario = prompt("Entrar[1] Cadastro[2]");
+
+        switch (tipoDeUsuario) {
+            case "1":
+                prompt(`Olá ${nome} é um prazer ter você por aqui! `);
+                break;
+
+            case "2":
+                alert(`Parece que você ainda não tem cadastro conosco. click em Ok para se cadastrar`);
+                let sobrenome = prompt("Nos informe seu sobrenome:")
+                let cpf = prompt("Informe seu CPF:")
+                alert(`Parabêns! ${nome} ${sobrenome},seu  cadastro foi realizado`);
+                break;
+
+            default:
+                alert("Erro");
+                break;
+        }
+
+        let saldo = 108.5;
+
+
+        function inicio() {
+
+            let escolha = parseInt(prompt("Selecione uma opção [1] Saldo [2] Extrato [3] Saque [4] Deposito [5] Transferencia [6] Sair"));
+
+            if (escolha === 1) {
+                ver_saldo();
+
+            } else if (escolha === 2) {
+                olhar_extrato();
+
+            } else if (escolha === 3) {
+                fazer_saque();
+
+            } else if (escolha === 4) {
+                fazer_deposito();
+
+
+            } else if (escolha === 5) {
+                realizar_transferencia();
+
+            } else if (escolha === 6) {
+                sair();
+
+
+            } else {
+                erro();
+            }
+        }
+
+        function ver_saldo() {
+
+            const senhaSaldo = prompt("Por favor, insira a senha para acessar o saldo:");
+
+            if (senhaSaldo === "3589") {
+                alert(`Seu saldo atual é ${saldo}`);
+                inicio();
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+               erro()
+            }
+        }
+
+        function olhar_extrato() {
+
+            var senhaExtrato = prompt("Por favor, insira a senha para visualizar o extrato:");
+            if (senhaExtrato === "3589") {
+                alert("Assinatura da netflix R$ 18,90, Cakeville R$ 63,00, Marisa R$ 99,99...");
+                inicio();
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+                erro();
+            }
+        }
+
+
+        function fazer_saque() {
+            let saque = parseFloat(prompt('Qual o valor para saque?'));
+
+            if (isNaN(saque) || saque <= 0) {
+                alert('Operação não autorizada: Valor inválido.');
+                fazer_saque();
+
+            } else if (saque > saldo) {
+                alert('Operação não autorizada: Saldo insuficiente.');
+                inicio();
+
+            } else {
+                saldo -= saque;
+                ver_saldo();
+            }
+
+            var senhaSaque = prompt("Por favor, insira a senha para realizar o saque:");
+
+            if (senhaSaque === "3589") {
+                alert(`Saldo atual: ${saldo}`)
+                inicio()
+
+            } else {
+                alert("Senha incorreta. tente novamente");
+                fazer_saque();
+            }
+        }
+
+        function fazer_deposito() {
+            let deposito = parseFloat(prompt("Qual o valor do deposito?"));
+
+            if (isNaN(deposito) || deposito === "") {
+                alert("por favor, informe um número ");
+                fazer_deposito();
+
+            } else {
+                saldo += deposito
+                ver_saldo();
+            }
+
+            var senhaDeposito = prompt("Por favor, insira a senha para realizar o deposito:");
+
+            if (senhaDeposito === "3589") {
+
+            } else {
+                alert("Senha incorreta. tente novamente");
+                fazer_deposito();
+            }
+
+
+        }
+
+        function realizar_transferencia() {
+
+            let quantia = parseFloat(prompt("Qual é o valor da transferência?"));
+            let destinatario = prompt("Nome da pessoa:");
+
+            if (isNaN(quantia) || quantia <= 0) {
+                alert('Operação não autorizada: Valor inválido.');
+                realizar_transferencia();
+
+            } else if (quantia > saldo) {
+                alert('Operação não autorizada: Saldo insuficiente.');
+                realizar_transferencia();
+
+            }
+
+            var senhaTransferencia = prompt("Por favor, insira a senha para realizar a transferência:");
+
+            if (senhaTransferencia === "3589") {
+                alert(`Transferência de R$ ${quantia} reais  realizada para ${destinatario}.`);
+                inicio()
+
+
+            } else {
+                alert("Senha incorreta. tente novamente");
+                realizar_transferencia();
+            }
+
+        }
+        
+        function sair(){
+            var confirma = confirm('Você deseja sair?');
+            if (confirma) {
+                alert(`Foi uma prazer te ter aqui ${nome}`)
+                window.close();
+                
+            } else {
+                inicio();
+            }
+        }
+
+        
+
+        function erro(){
+            alert("Parece que algo deu errado tente novamente");
+        }
+
+
+
+        inicio();
+    </script>
+
+</body>
+
+</html>
