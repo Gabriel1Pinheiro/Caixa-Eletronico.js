@@ -18,7 +18,7 @@
         switch (tipoDeUsuario) {
             case "1":
                 prompt(`Olá ${nome} é um prazer ter você por aqui! `);
-                break;
+               break
 
             case "2":
                 alert(`Parece que você ainda não tem cadastro conosco. click em Ok para se cadastrar`);
@@ -73,7 +73,7 @@
                 inicio();
             } else {
                 alert("Senha incorreta. Tente novamente.");
-               erro()
+                erro()
             }
         }
 
@@ -87,7 +87,12 @@
                 alert("Senha incorreta. Tente novamente.");
                 erro();
             }
+
+            ver_saldo()
+
+
         }
+
 
 
         function fazer_saque() {
@@ -103,7 +108,7 @@
 
             } else {
                 saldo -= saque;
-                ver_saldo();
+
             }
 
             var senhaSaque = prompt("Por favor, insira a senha para realizar o saque:");
@@ -116,7 +121,11 @@
                 alert("Senha incorreta. tente novamente");
                 fazer_saque();
             }
+
+            ver_saldo()
         }
+
+       
 
         function fazer_deposito() {
             let deposito = parseFloat(prompt("Qual o valor do deposito?"));
@@ -127,20 +136,23 @@
 
             } else {
                 saldo += deposito
-                ver_saldo();
             }
 
             var senhaDeposito = prompt("Por favor, insira a senha para realizar o deposito:");
 
             if (senhaDeposito === "3589") {
+                alert(`Saldo atual: ${saldo}`)
+                inicio()
 
             } else {
                 alert("Senha incorreta. tente novamente");
                 fazer_deposito();
             }
 
-
+            ver_saldo()
         }
+
+       
 
         function realizar_transferencia() {
 
@@ -169,26 +181,30 @@
                 realizar_transferencia();
             }
 
+            ver_saldo()
+
+
         }
-        
-        function sair(){
-            var confirma = confirm('Você deseja sair?');
-            if (confirma) {
+
+      
+        function sair() {
+            let confirma = confirm("Você deseja sair?")
+
+            if(confirma == true) {
                 alert(`Foi uma prazer te ter aqui ${nome}`)
-                window.close();
-                
+            window.closed()
+
             } else {
+                alert("False")
                 inicio();
             }
         }
 
-        
 
-        function erro(){
+
+        function erro() {
             alert("Parece que algo deu errado tente novamente");
         }
-
-
 
         inicio();
     </script>
